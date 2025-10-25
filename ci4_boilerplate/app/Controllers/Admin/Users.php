@@ -3,42 +3,64 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use GroceryCrud\Core\GroceryCrud;
+use App\Models\UserModel;
 
 class Users extends BaseController
 {
-    public function index()
+    protected $userModel;
+
+    public function __construct()
     {
-        // This is a placeholder for the Grocery CRUD implementation.
-        // Once you are able to install Grocery CRUD, you can uncomment
-        // the following code to see it in action.
-
-        /*
-        $crud = new GroceryCrud();
-
-        $crud->setTable('users');
-        $crud->setSubject('User', 'Users');
-        $crud->columns(['username', 'email', 'active']);
-
-        $crud->callbackBeforeInsert(function ($stateParameters) {
-            // Your custom logic here. For example, logging the action.
-            log_message('info', 'A new user is being added: ' . $stateParameters->data['username']);
-
-            return $stateParameters;
-        });
-
-        $output = $crud->render();
-
-        return $this->_exampleOutput($output);
-        */
-
-        return view('welcome_message');
+        $this->userModel = new UserModel();
     }
 
-    private function _exampleOutput($output = null)
+    public function index()
     {
-        // This is a helper method to display the Grocery CRUD output.
-        // You can customize this to match your application's layout.
-        return view('example', (array)$output);
+        $data = [
+            'users' => $this->userModel->findAll(),
+        ];
+
+        return view('admin/users/index', $data);
+    }
+
+    public function new()
+    {
+        return view('admin/users/new');
+    }
+
+    public function create()
+    {
+        if ($this->userModel->save($this->request->getPost())) {
+            return redirect()->to('/admin/users')->with('message', 'User created successfully.');
+        }
+
+        return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'user' => $this->userModel->find($id),
+        ];
+
+        return view('admin/users/edit', $data);
+    }
+
+    public function update($id)
+    {
+        if ($this->userModel->update($id, $this->request->getPost())) {
+            return redirect()->to('/admin/users')->with('message', 'User updated successfully.');
+        }
+
+        return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+    }
+
+    public function delete($id)
+    {
+        if ($this->userModel->delete($id)) {
+            return redirect()->to('/admin/users')->with('message', 'User deleted successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Error deleting user.');
     }
 }

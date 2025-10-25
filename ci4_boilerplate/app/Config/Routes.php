@@ -10,12 +10,12 @@ $routes->get('/', 'Home::index');
 service('auth')->routes($routes);
 
 // Admin Routes
-$routes->group('admin', ['filter' => 'shield:admin.access'], function ($routes) {
+$routes->group('admin', ['filter' => 'permission:admin.access'], function ($routes) {
     $routes->get('reports', 'Admin\Reports::index');
     $routes->get('users', 'Admin\Users::index');
 });
 
 // POS Routes
-$routes->group('pos', ['filter' => 'shield:pos.use'], function ($routes) {
+$routes->group('pos', ['filter' => 'permission:pos.use'], function ($routes) {
     $routes->get('/', 'POS::index');
 });

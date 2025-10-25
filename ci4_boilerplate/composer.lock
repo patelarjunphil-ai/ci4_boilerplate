@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae76446c85de95859dc95f389c7553b2",
+    "content-hash": "a2f3fed69022bd306fe5e4d4d93ad0a2",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -1154,6 +1154,55 @@
             "time": "2021-11-05T16:47:00+00:00"
         },
         {
+            "name": "rahpt/cli-crud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rahpt/cli-crud.git",
+                "reference": "0d284dd6deab372548e8d4d8afe74437e59bbae6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rahpt/cli-crud/zipball/0d284dd6deab372548e8d4d8afe74437e59bbae6",
+                "reference": "0d284dd6deab372548e8d4d8afe74437e59bbae6",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4",
+                "php": "^7.3 || ^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "rahpt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RahPT",
+                    "email": "cli-crud@rah.pt"
+                }
+            ],
+            "description": "Cli-Crud is an extension of CodeIgniter4 spark CLI. It will help you generate template files more quickly when developing projects with CodeIgniter4",
+            "keywords": [
+                "cli",
+                "codeigniter",
+                "codeigniter4",
+                "commands",
+                "crud"
+            ],
+            "support": {
+                "issues": "https://github.com/rahpt/cli-crud/issues",
+                "source": "https://github.com/rahpt/cli-crud/tree/master"
+            },
+            "time": "2022-06-10T00:32:06+00:00"
+        },
+        {
             "name": "sebastian/cli-parser",
             "version": "2.0.1",
             "source": {
@@ -2226,7 +2275,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "rahpt/cli-crud": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

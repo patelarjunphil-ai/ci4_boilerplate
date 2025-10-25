@@ -17,7 +17,8 @@
     "require-dev": {
         "fakerphp/faker": "^1.9",
         "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^10.5.16"
+        "phpunit/phpunit": "^10.5.16",
+        "rahpt/cli-crud": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -40,11 +41,5 @@
     },
     "scripts": {
         "test": "phpunit"
-    },
-    "repositories": {
-        "grocery-crud": {
-            "type": "vcs",
-            "url": "https://github.com/grocery-crud/enterprise-bundle.git"
-        }
     }
 }
